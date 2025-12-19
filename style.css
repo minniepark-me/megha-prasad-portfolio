@@ -343,57 +343,67 @@ h3 { font-size: 1.5rem; }
 .timeline-content p {
     color: var(--text-secondary);
 }
-
-/* --- Projects Section Redesign --- */
+/* --- Final Project Layout Fix --- */
 .project-grid {
     display: flex;
-    flex-direction: column; /* Stacks projects one after another vertically */
-    gap: 40px; /* Space between each horizontal project row */
-    padding: 20px 0;
+    flex-direction: column;
+    gap: 60px; /* Increased gap to ensure physical separation */
+    padding: 40px 0;
+    width: 100%;
 }
 
 .project-card {
     background-color: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    
-    /* This makes every card horizontal */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Image takes ~45%, Text takes ~55% */
-    min-height: 350px; /* Ensures the card has a consistent minimum height */
+    grid-template-columns: 1fr 1.2fr; 
+    overflow: hidden;
+    position: relative; /* Fixed: prevents overlap issues */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 400px;
     width: 100%;
 }
+
+/* Restoring the Hover Effect */
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: 10; /* Ensures the hovered card stays on top */
+}
+
 .project-img {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}   
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
 
 .project-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Prevents image distortion */
+    object-fit: cover; /* Prevents stretching and overlapping */
     display: block;
 }
 
 .project-info {
-    padding: 30px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers text vertically next to image */
+    justify-content: center;
 }
 
-/* Mobile Responsiveness: Stack them vertically on small screens */
-@media screen and (max-width: 850px) {
+/* Mobile Responsiveness */
+@media screen and (max-width: 900px) {
     .project-card {
-        grid-template-columns: 1fr;/* Stack image on top of text on mobile */
+        grid-template-columns: 1fr;
         min-height: auto;
     }
-    
     .project-img {
-        height: 250px; /* Give the image a fixed height on mobile */
+        height: 250px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 
