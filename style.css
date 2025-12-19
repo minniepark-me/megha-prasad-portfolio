@@ -344,20 +344,11 @@ h3 { font-size: 1.5rem; }
     color: var(--text-secondary);
 }
 
-/* --- Projects Section --- */
+/* --- Projects Section Redesign --- */
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-/* Featured card spans full width on larger screens */
-.featured-card {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: center;
+    display: flex;
+    flex-direction: column; /* Stacks projects one after another vertically */
+    gap: 40px; /* Space between each horizontal project row */
 }
 
 .project-card {
@@ -367,22 +358,38 @@ h3 { font-size: 1.5rem; }
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    /* This makes every card horizontal */
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Image takes ~45%, Text takes ~55% */
+    align-items: center;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     border-color: var(--accent-color);
+}
+
+.project-img {
+    height: 100%; /* Ensures the image fills the left side height */
 }
 
 .project-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-bottom: 3px solid var(--accent-color);
+    object-fit: cover; /* Prevents image distortion */
+    display: block;
 }
 
-.project-info {
-    padding: 25px;
+/* Mobile Responsiveness: Stack them vertically on small screens */
+@media screen and (max-width: 768px) {
+    .project-card {
+        grid-template-columns: 1fr; /* Stack image on top of text on mobile */
+    }
+    
+    .project-img {
+        height: 250px; /* Give the image a fixed height on mobile */
+    }
 }
 
 /* Badges for project types */
