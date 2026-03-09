@@ -610,13 +610,13 @@ footer {
     }
 
     .timeline::after {
-        left: 31px;
+        left: 10px;
     }
     .timeline-item {
-        padding-left: 70px;
+        padding-left: 45px;
     }
     .timeline-dot {
-        left: 22px;
+        left: 2px;
     }
 
     .contact-methods {
