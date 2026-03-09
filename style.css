@@ -292,12 +292,7 @@ h3 { font-size: 1.5rem; }
     bottom: 0;
     left: 0;
     margin-left: -1px;
-}
-
-.timeline-item {
-    padding-left: 40px;
-    position: relative;
-    margin-bottom: 40px;
+    z-index: 0; /* Forces the neon line to stay in the background */
 }
 
 /* The dot on the line */
@@ -310,6 +305,7 @@ h3 { font-size: 1.5rem; }
     left: -9px;
     top: 5px;
     border: 3px solid var(--bg-secondary);
+    z-index: 10; /* Pushes the green dot completely to the front */
 }
 
 .timeline-date {
